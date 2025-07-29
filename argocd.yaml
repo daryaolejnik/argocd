@@ -1,0 +1,45 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  description: ArgoCD project
+  sourceRepos:
+    - '*'
+  destinations:
+    - name: in-cluster
+      server: https://kubernetes.default.svc
+      namespace: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd
+  annotations:
+    # notifications.argoproj.io/subscribe.on-sync-succeeded.teams: channelArgoCD
+    # notifications.argoproj.io/subscribe.on-sync-failed.teams: channelArgoCD
+    # notifications.argoproj.io/subscribe.on-sync-status-unknown.teams: channelArgoCD
+    # notifications.argoproj.io/subscribe.on-health-degraded.teams: channelArgoCD
+
+spec:
+  destination:
+    namespace: argocd
+    name: in-cluster
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+  project: argocd
+  source:
+    repoURL: git@github.com:vavan11/argocd.git
+    targetRevision: HEAD
+    path: argocd

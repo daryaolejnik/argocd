@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: argocd
+  name: argocd-ingress
+  labels:
+    app.kubernetes.io/name: argocd-ingress
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/component: ingress
+  annotations:
+spec:
+  tls:
+    - hosts:
+        - PLACEHOLDER.pp.ua
+      secretName: argocd-ingress-cert
+  rules:
+    - host: PLACEHOLDER.pp.ua
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: http
+
