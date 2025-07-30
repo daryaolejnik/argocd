@@ -23,10 +23,6 @@ metadata:
   namespace: argocd
   name: argocd
   annotations:
-    # notifications.argoproj.io/subscribe.on-sync-succeeded.teams: channelArgoCD
-    # notifications.argoproj.io/subscribe.on-sync-failed.teams: channelArgoCD
-    # notifications.argoproj.io/subscribe.on-sync-status-unknown.teams: channelArgoCD
-    # notifications.argoproj.io/subscribe.on-health-degraded.teams: channelArgoCD
 
 spec:
   destination:
