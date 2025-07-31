@@ -36,6 +36,6 @@ spec:
 
   project: argocd
   source:
-    repoURL: git@github.com:vavan11/argocd.git
+    repoURL: git@github.com:daryaolejnik/argocd.git
     targetRevision: HEAD
     path: argocd
