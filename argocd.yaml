@@ -7,14 +7,14 @@ metadata:
 spec:
   description: ArgoCD project
   sourceRepos:
-    - '*'
+    - "*"
   destinations:
     - name: in-cluster
       server: https://kubernetes.default.svc
-      namespace: '*'
+      namespace: "*"
   clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
+    - group: "*"
+      kind: "*"
 
 ---
 apiVersion: argoproj.io/v1alpha1
