@@ -2,26 +2,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: argocd
-  namespace: argocd
-spec:
-  description: ArgoCD project
-  sourceRepos:
-    - "*"
-  destinations:
-    - name: in-cluster
-      server: https://kubernetes.default.svc
-      namespace: "*"
-  clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
   name: infrastructure
-  namespace: infrastructure
+  namespace: argocd
 spec:
   description: infrastructure project
   sourceRepos:
@@ -39,30 +21,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd
-  annotations:
-
-spec:
-  destination:
-    namespace: argocd
-    name: in-cluster
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-
-  project: argocd
-  source:
-    repoURL: git@github.com:daryaolejnik/argocd.git
-    targetRevision: HEAD
-    path: argocd
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: infrastructure
   name: ingress-nginx
   annotations:
 
@@ -86,7 +44,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: infrastructure
+  namespace: argocd
   name: metrics-server
   annotations:
 
