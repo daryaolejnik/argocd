@@ -39,29 +39,29 @@ spec:
     repoURL: git@github.com:daryaolejnik/argocd.git
     targetRevision: HEAD
     path: infrastructure/ingress-nginx
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   namespace: argocd
+#   name: metrics-server
+#   annotations:
 
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: metrics-server
-  annotations:
+# spec:
+#   destination:
+#     namespace: infrastructure
+#     name: in-cluster
 
-spec:
-  destination:
-    namespace: infrastructure
-    name: in-cluster
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-
-  project: infrastructure
-  source:
-    repoURL: https://kubernetes-sigs.github.io/metrics-server/
-    targetRevision: 3.13.0
-    chart: metrics-server
-    helm:
-      releaseName: metrics-server
+#   project: infrastructure
+#   source:
+#     repoURL: https://kubernetes-sigs.github.io/metrics-server/
+#     targetRevision: 3.13.0
+#     chart: metrics-server
+#     helm:
+#       releaseName: metrics-server
+#       values:
