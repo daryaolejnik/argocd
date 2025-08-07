@@ -9,13 +9,14 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: ingress
   annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   tls:
     - hosts:
-        - PLACEHOLDER.pp.ua
+        - doliinyk-argocd.pp.ua
       secretName: argocd-ingress-cert
   rules:
-    - host: PLACEHOLDER.pp.ua
+    - host: doliinyk-argocd.pp.ua
       http:
         paths:
           - path: /
@@ -25,4 +26,3 @@ spec:
                 name: argocd-server
                 port:
                   name: http
-

@@ -7,7 +7,7 @@ bases:
 
 resources:
   - resources/argocd-namespace.yaml
-#  - resources/argocd-ingress.yaml
+  - resources/argocd-ingress.yaml
 patchesStrategicMerge:
   - overlays/argocd-cm.yaml
   - overlays/argocd-rbac-cm.yaml
