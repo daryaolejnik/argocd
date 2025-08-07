@@ -4,6 +4,7 @@ metadata:
   name: argocd-cm
 data:
   #  accounts.api_user: apiKey
+  application.resourceTrackingMethod: label
   admin.enabled: "true"
   application.instanceLabelKey: argocd.argoproj.io/instance
   repository.credentials: |
