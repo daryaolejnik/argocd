@@ -60,6 +60,8 @@ spec:
 
   project: infrastructure
   source:
-    repoURL: git@github.com:daryaolejnik/argocd.git
-    targetRevision: HEAD
-    path: infrastructure/metrics-server
+    repoURL: https://kubernetes-sigs.github.io/metrics-server/
+    targetRevision: 3.13.0
+    chart: metrics-server
+    helm:
+      releaseName: metrics-server
