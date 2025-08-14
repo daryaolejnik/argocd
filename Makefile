@@ -1,8 +1,8 @@
 deploy-argo:
 	sops --decrypt --in-place --kms "arn:aws:kms:eu-north-1:102205351130:key/7f24b0cf-8aa6-48c0-989d-7fef0a9194c6" --aws-profile nix-k8s argocd-repo-key.yaml
-	kubectl apply -k argocd
-	kubectl apply -f ./infrastructure/infrastructure-namespace.yaml
-	kubectl apply -f ./infrastructure/argocd.yaml
+	kubectl apply -k argocd --timeout=600s
+	kubectl apply -n argocd -f argocd-repo-key.yaml
+	kubectl apply -f namespaces.yaml
 	kubectl apply -f argocd.yaml
 	sops --encrypt --in-place --kms "arn:aws:kms:eu-north-1:102205351130:key/7f24b0cf-8aa6-48c0-989d-7fef0a9194c6" --aws-profile nix-k8s argocd-repo-key.yaml
 

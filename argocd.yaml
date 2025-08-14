@@ -21,7 +21,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: infrastructure
-  namespace: infrastructure
+  namespace: argocd
 spec:
   description: infrastructure project
   sourceRepos:
@@ -57,3 +57,45 @@ spec:
     repoURL: git@github.com:daryaolejnik/argocd.git
     targetRevision: HEAD
     path: argocd
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: homeproj
+  namespace: argocd
+spec:
+  description: homeproj project
+  sourceRepos:
+    - "*"
+  destinations:
+    - name: in-cluster
+      server: https://kubernetes.default.svc
+      namespace: "*"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: homeproj
+  annotations:
+
+spec:
+  destination:
+    namespace: my-app
+    name: in-cluster
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+  project: homeproj
+  source:
+    repoURL: git@github.com:daryaolejnik/k8s-learning.git
+    targetRevision: HEAD
+    path: k8s/chart
