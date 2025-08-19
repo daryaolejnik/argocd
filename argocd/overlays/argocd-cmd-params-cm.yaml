@@ -10,5 +10,4 @@ data:
   # Redis server hostname and port (e.g. argocd-redis:6379 HA: argocd-redis-ha:6379)
   redis.server: "argocd-redis:6379"
   applicationsetcontroller.enable.leader.election: "true"
-
 #https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml

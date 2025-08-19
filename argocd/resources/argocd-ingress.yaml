@@ -14,10 +14,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - argocd-doliinyk-app.pp.ua
-      # secretName: argocd-ingress-cert
+        - argocd.doliinyk-app.pp.ua
+      secretName: argocd-ingress-cert
   rules:
-    - host: argocd-doliinyk-app.pp.ua
+    - host: argocd.doliinyk-app.pp.ua
       http:
         paths:
           - path: /
