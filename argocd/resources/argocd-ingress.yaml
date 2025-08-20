@@ -15,7 +15,6 @@ spec:
   tls:
     - hosts:
         - argocd.doliinyk-app.pp.ua
-      secretName: argocd-ingress-cert
   rules:
     - host: argocd.doliinyk-app.pp.ua
       http:
