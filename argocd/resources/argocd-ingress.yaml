@@ -12,10 +12,10 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     # certificate annotations
-spec:
-  tls:
-    - hosts:
-        - argocd.doliinyk-app.pp.ua
+  # spec:
+  #   tls:
+  #     - hosts:
+  #         - argocd.doliinyk-app.pp.ua
   rules:
     - host: argocd.doliinyk-app.pp.ua
       http:
