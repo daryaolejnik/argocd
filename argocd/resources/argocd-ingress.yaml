@@ -11,7 +11,6 @@ metadata:
   annotations:
     k8s.io/ingress-nginx: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   #   tls:
   #     - hosts:
