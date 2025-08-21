@@ -13,10 +13,10 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - argocd.doliinyk-app.pp.ua
-      secretName: argocd
+  # tls:
+  #   - hosts:
+  #       - argocd.doliinyk-app.pp.ua
+  #     secretName: argocd
   rules:
     - host: argocd.doliinyk-app.pp.ua
       http:
