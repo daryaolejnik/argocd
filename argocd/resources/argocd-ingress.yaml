@@ -11,13 +11,13 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: selfsigning-issuer
+    # cert-manager.io/cluster-issuer: selfsigning-issuer
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - argocd.doliinyk-app.pp.ua
-      secretName: argocd
+      secretName: aws-load-balancer-tls
   rules:
     - host: argocd.doliinyk-app.pp.ua
       http:
