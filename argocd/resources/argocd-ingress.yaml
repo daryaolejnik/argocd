@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    k8s.io/ingress-nginx: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
